@@ -1,0 +1,23 @@
+from keras.utils import load_img
+import numpy as np
+import matplotlib.pyplot as plt # Added import
+
+path ="/content/huongduong.jpg.jpg" # Corrected filename to tulip.jpg
+
+# Ensure img_width and img_height are defined, using values from previous cells
+# As per the previous cell ukZRSI1xq6Ia, img_width and img_height are 200, 200
+img_width, img_height = 200, 200
+
+# Tiên đoán loại
+img = load_img(path, target_size=(img_width, img_height))
+plt.imshow(img)
+plt.show() # Corrected pit.show() to plt.show()
+img = np.array(img)
+img = img / 255.0
+img = img.reshape(1, img_width, img_height, 3) # Reshape to match model input
+prediction = np.argmax(model.predict(img))
+
+# Ánh xạ loại tới tên hoa
+class_labels = {v: k for k, v in train_generator.class_indices.items()} # Corrected syntax and typo
+flower_name = class_labels[prediction]
+print(f"Hoa của bạn là: {flower_name}") # Corrected f-string usage
